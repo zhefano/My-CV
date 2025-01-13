@@ -1,6 +1,5 @@
 import React from 'react'
 import img from '../../assets/img.png'
-import CV from './CV.pdf' 
 
 export default function Hero() {
   return (
@@ -24,9 +23,9 @@ export default function Hero() {
             Frontend utvecklare student som bor i Göteborg.
           </p>
           <div className="flex justify-center">
-            <a href={CV} download>
+            <a href="https://www.linkedin.com/in/noel-gill-136763306/" target="_blank" rel="noopener noreferrer">
               <button className="inline-flex text-white bg-purple-700 border-0 py-2 px-6 focus:outline-none hover:bg-purple-800 hover:shadow-[0_0_40px_rgb(128,0,128,0.7)] rounded-full text-lg">
-                Ladda ner CV
+                Min Linkedin
               </button>
             </a>
           </div>
@@ -41,5 +40,4 @@ export default function Hero() {
       </div>
     </section>
   )
-
 }

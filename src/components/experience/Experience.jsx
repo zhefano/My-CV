@@ -41,13 +41,13 @@ export default function Erfarenhet() {
         </h1>
 
         {/* 2023 */}
-        <h2 className='title-font font-bold text-white sm:text-2xl '>2023 :</h2>
+        <h2 className='title-font font-bold text-white sm:text-2xl '>2024 :</h2>
         <p className='mb-8 text-white leading-relaxed '>
-          År 2023 började jag studera frontend-utveckling med HTML, CSS och JavaScript. Jag lärde mig även Tailwind som CSS-ramverk och React för att bygga användargränssnitt.
+        Mina skills inkluderar HTML, CSS, JavaScript, UX/UI-design och agil projektmetodik enligt Scrum. Jag fördjupar mig även i React och Angular samt utforskar grunderna i backendutveckling.
         </p>
 
         {/* 2024 */}
-        <h2 className='title-font font-bold text-white sm:text-2xl '>2024 :</h2>
+        <h2 className='title-font font-bold text-white sm:text-2xl '>2025 :</h2>
         <p className='mb-8 text-white leading-relaxed '>
           Just nu är jag fortfarande student men är ivrig att lära mig mer. 
         </p>
