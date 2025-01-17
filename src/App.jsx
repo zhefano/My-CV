@@ -8,6 +8,7 @@ import Experience from './components/experience/Experience'
 import Language from './components/language/Language'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
+import Projects from './components/projects/Projects'
 
 export default function App() {
   useEffect(() => {
@@ -27,6 +28,10 @@ export default function App() {
       </section>
       <section id="language">
         <Language />
+      </section>
+      {/* NYTT */}
+      <section id="projects">
+        <Projects />
       </section>
       <section id="contact">
         <Contact />

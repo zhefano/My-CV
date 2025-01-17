@@ -8,6 +8,7 @@ export default function Navbar() {
     { name: 'Färdigheter', link: '#skills' },
     { name: 'Erfarenhet', link: '#experience' },
     { name: 'Språk', link: '#language' },
+    { name: 'Projekt', link: '#projects' }, 
     { name: 'Kontakt', link: '#contact' },
   ];
 
