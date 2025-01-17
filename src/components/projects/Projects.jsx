@@ -4,14 +4,17 @@ export default function Projects() {
   const projectList = [
     {
       title: 'Weddit',
+      description: 'Skapat med React, HTML och CSS.',
       link: 'https://weddit-rho.vercel.app/',
     },
     {
       title: 'Byt Däck',
+      description: 'Skapat med JavaScript, HTML och CSS..',
       link: 'https://byt-dack.vercel.app/',
     },
     {
       title: 'Biblioteksapp',
+      description: 'Skapat med HTML och CSS.',
       link: 'https://projektarbete-bibliotek.vercel.app/',
     },
   ]
@@ -36,25 +39,22 @@ export default function Projects() {
           {projectList.map((project, index) => (
             <div
               key={index}
-              
-              className="group w-full md:w-3/4 [perspective:1000px]"
+              className="w-full md:w-3/4 bg-black/70 p-6 rounded shadow-md transition-transform hover:scale-105"
             >
-              <div
-                
-                className="bg-black/70 p-6 rounded shadow-md transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(6deg)_rotateY(6deg)]"
+              <h3 className="text-2xl font-bold text-purple-400 mb-2">
+                {project.title}
+              </h3>
+              <p className="text-purple-200 mb-4">
+                {project.description}
+              </p>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 underline hover:text-purple-200"
               >
-                <h3 className="text-2xl font-bold text-purple-400 mb-2">
-                  {project.title}
-                </h3>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 underline hover:text-purple-200 transition-colors"
-                >
-                  Besök projektet här
-                </a>
-              </div>
+                Besök projektet här
+              </a>
             </div>
           ))}
         </div>
