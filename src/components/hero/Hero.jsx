@@ -15,17 +15,20 @@ export default function Hero() {
         className="text-white body-font z-10 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
       >
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center relative">
-      
           <h1 className="title-font sm:text-4xl text-4xl mb-4 font-bold text-white">
-            Hej! Jag är Noel Blom
+            Hello! I'm Noel Blom
           </h1>
           <p className="mb-8 leading-relaxed">
-            Frontend utvecklare student som bor i Göteborg.
+            A frontend developer student living in Gothenburg.
           </p>
           <div className="flex justify-center">
-            <a href="https://www.linkedin.com/in/noel-gill-136763306/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/noel-gill-136763306/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className="inline-flex text-white bg-purple-700 border-0 py-2 px-6 focus:outline-none hover:bg-purple-800 hover:shadow-[0_0_40px_rgb(128,0,128,0.7)] rounded-full text-lg">
-                Min Linkedin
+                My LinkedIn
               </button>
             </a>
           </div>

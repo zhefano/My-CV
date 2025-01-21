@@ -41,8 +41,9 @@ export default function Skills() {
             data-aos-delay="500"
             className="leading-relaxed text-base text-blue-200"
           >
-            Jag har erfarenhet av olika tekniker och verktyg som är viktiga för
-            frontend-utveckling. Till höger ser du några av de tekniker jag behärskar.
+            I have experience with various technologies and tools essential for
+            frontend development. On the right, you can see some of the
+            technologies I master.
           </p>
         </div>
 
@@ -56,7 +57,7 @@ export default function Skills() {
               <li key={index} className="w-full flex justify-center">
                 <img
                   src={skill.img}
-                  alt={`${skill.name} Ikon`}
+                  alt={`${skill.name} Icon`}
                   className="rounded-full w-24 h-24 object-cover border-4 border-blue-300"
                 />
               </li>

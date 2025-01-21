@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Language() {
   const languages = [
-    { code: 'En', name: 'Engelska', level: 5 },
-    { code: 'Sv', name: 'Svenska', level: 5 },
-    { code: 'Sp', name: 'Spanska', level: 2 },
-    { code: 'Fr', name: 'Franska', level: 2 },
+    { code: 'En', name: 'English', level: 5 },
+    { code: 'Sv', name: 'Swedish', level: 5 },
+    { code: 'Sp', name: 'Spanish', level: 2 },
+    { code: 'Fr', name: 'French', level: 2 },
   ]
 
   const renderStars = (level) => {
@@ -47,7 +47,8 @@ export default function Language() {
           <div key={index} className="achievement flex flex-col items-center">
             <div className="circle w-20 h-20 md:w-16 md:h-16 bg-black rounded-full relative flex items-center justify-center text-lg md:text-xl font-bold mb-6 md:mb-8 shadow-lg">
               <span className="z-10 text-white">{lang.code}</span>
-              <div className="absolute top-[-6px] left-[-6px] right-[-6px] bottom-[-6px] 
+              <div
+                className="absolute top-[-6px] left-[-6px] right-[-6px] bottom-[-6px] 
                 md:top-[-8px] md:left-[-8px] md:right-[-8px] md:bottom-[-8px] 
                 rounded-full bg-gradient-to-b from-[#1e3a8a] to-[#3b82f6] 
                 shadow-[0_0_20px_rgba(59,130,246,0.7)] z-0"

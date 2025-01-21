@@ -4,17 +4,17 @@ export default function Projects() {
   const projectList = [
     {
       title: 'Weddit',
-      description: 'Skapat med React, HTML och CSS.',
+      description: 'Created with React, HTML and CSS.',
       link: 'https://weddit-rho.vercel.app/',
     },
     {
       title: 'Byt Däck',
-      description: 'Skapat med JavaScript, HTML och CSS..',
+      description: 'Created with JavaScript, HTML and CSS.',
       link: 'https://byt-dack.vercel.app/',
     },
     {
-      title: 'Biblioteksapp',
-      description: 'Skapat med HTML och CSS.',
+      title: 'Library App',
+      description: 'Created with HTML and CSS.',
       link: 'https://projektarbete-bibliotek.vercel.app/',
     },
   ]
@@ -28,13 +28,12 @@ export default function Projects() {
     >
       <div className="container mx-auto px-5">
         <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-center text-purple-400">
-          Projekt
+          Projects
         </h2>
         <p className="text-center text-xl text-purple-300 mb-8 max-w-2xl mx-auto">
-          Nedan ser du några av de projekt jag byggt och hostat på Vercel.
+          Below you can see some of the projects I built and hosted on Vercel.
         </p>
 
-       
         <div className="flex flex-col items-center justify-center gap-8">
           {projectList.map((project, index) => (
             <div
@@ -53,7 +52,7 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 className="text-purple-400 underline hover:text-purple-200"
               >
-                Besök projektet här
+                Visit the project here
               </a>
             </div>
           ))}

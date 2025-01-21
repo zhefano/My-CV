@@ -5,17 +5,17 @@ import twitterIcon from '../../assets/x.png';
 
 export default function Footer() {
   const listNavbar = [
-    { name: 'Hem', link: '#home' },
-    { name: 'Färdigheter', link: '#skills' },
-    { name: 'Erfarenhet', link: '#experience' },
-    { name: 'Språk', link: '#language' },
-    { name: 'Kontakt', link: '#contact' },
+    { name: 'Home', link: '#home' },
+    { name: 'Skills', link: '#skills' },
+    { name: 'Experience', link: '#experience' },
+    { name: 'Language', link: '#language' },
+    { name: 'Contact', link: '#contact' },
   ];
 
   const socialLinks = [
     { name: 'GitHub', link: 'https://github.com/zhefano', icon: githubIcon },
     { name: 'Instagram', link: 'https://instagram.com/noelblom', icon: instagramIcon },
-    { name: 'x', link: 'https://x.com/noelblom', icon: twitterIcon },
+    { name: 'X', link: 'https://x.com/noelblom', icon: twitterIcon },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function Footer() {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Besök min ${item.name}`}
+              aria-label={`Visit my ${item.name}`}
               className="hover:scale-110 transform transition-transform duration-300"
             >
               <img src={item.icon} alt={item.name} className="w-7 h-7" />
