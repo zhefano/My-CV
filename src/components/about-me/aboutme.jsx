@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import aboutBg from '../../assets/space2.avif'; // Bakgrundsbild
 import myImage from '../../assets/img.png'; // Din personliga bild
-import './aboutme.css'; // Importera vår CSS för transitionen
 
 export default function AboutMe() {
   const [showMore, setShowMore] = useState(false);
