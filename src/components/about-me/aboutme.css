@@ -1,0 +1,33 @@
+/* AboutMe.css */
+.fade-enter {
+    opacity: 0;
+    max-height: 0;
+  }
+  .fade-enter-active {
+    opacity: 1;
+    max-height: 300px; /* Justera max-höjd vid behov */
+    transition: opacity 300ms, max-height 300ms;
+  }
+  .fade-exit {
+    opacity: 1;
+    max-height: 300px;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 300ms, max-height 300ms;
+  }
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }

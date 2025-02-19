@@ -1,46 +1,33 @@
-import React from 'react'
-import img from '../../assets/img.png'
+import React from 'react';
+import videoBg from '../../assets/video.mp4'; // justera sökvägen efter behov
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-[550px] sm:min-h-[660px] flex flex-col"
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-900 via-black to-purple-900 opacity-75"></div>
-
-      <div
-        data-aos="fade-up"
-        data-aos-delay="250"
-        className="text-white body-font z-10 container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
+      {/* Bakgrundsvideon */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover"
       >
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center relative">
-          <h1 className="title-font sm:text-4xl text-4xl mb-4 font-bold text-white">
-            Hello! I'm Noel Blom
-          </h1>
-          <p className="mb-8 leading-relaxed">
-            A frontend developer student living in Gothenburg.
-          </p>
-          <div className="flex justify-center">
-            <a
-              href="https://www.linkedin.com/in/noel-gill-136763306/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="inline-flex text-white bg-purple-700 border-0 py-2 px-6 focus:outline-none hover:bg-purple-800 hover:shadow-[0_0_40px_rgb(128,0,128,0.7)] rounded-full text-lg">
-                My LinkedIn
-              </button>
-            </a>
-          </div>
-        </div>
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-          <img
-            src={img}
-            alt="Noel Blom"
-            className="object-cover object-center rounded-full w-80 h-80 border-4 border-purple-700"
-          />
-        </div>
+        <source src={videoBg} type="video/mp4" />
+        Din webbläsare stödjer inte video.
+      </video>
+
+      {/* Overlay för bättre kontrast */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
+      {/* Innehåll */}
+      <div className="relative z-10 text-center text-white px-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">Hello, I'm Noel Gill</h1>
+        <p className="text-xl md:text-2xl">Frontend Developer Student</p>
+        {/* Du kan lägga till fler knappar eller länkar här */}
       </div>
     </section>
-  )
+  );
 }

@@ -5,6 +5,7 @@ export default function Navbar() {
 
   const listNavbar = [
     { name: 'Home', link: '#home' },
+    { name: 'About Me', link: '#about' },
     { name: 'Skills', link: '#skills' },
     { name: 'Experience', link: '#experience' },
     { name: 'Language', link: '#language' },
@@ -25,10 +26,9 @@ export default function Navbar() {
             href="#home"
             className="text-3xl font-bold text-white hover:text-purple-400 transition-colors duration-300"
           >
-            Noel Blom
+            Noel Gill
           </a>
 
-         
           <button
             onClick={toggleNavbar}
             className="md:hidden text-white text-2xl focus:outline-none"
@@ -36,7 +36,6 @@ export default function Navbar() {
             {isOpen ? '✕' : '☰'}
           </button>
 
-          
           <nav className="hidden md:flex items-center space-x-8">
             {listNavbar.map((item, index) => (
               <a
@@ -47,16 +46,9 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="ml-4 px-6 py-2 text-white border border-white rounded-full hover:bg-purple-700 hover:border-purple-700 transition-colors duration-300"
-            >
-              Contact Me
-            </a>
           </nav>
         </div>
 
-      
         {isOpen && (
           <div className="md:hidden bg-[#0b0c10] p-4">
             {listNavbar.map((item, index) => (
@@ -69,12 +61,6 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="block mt-4 px-6 py-2 text-white border border-white rounded-full hover:bg-purple-700 hover:border-purple-700 transition-colors duration-300"
-            >
-              Contact Me
-            </a>
           </div>
         )}
       </div>

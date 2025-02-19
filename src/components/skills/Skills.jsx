@@ -23,7 +23,7 @@ export default function Skills() {
         backgroundPosition: 'center',
       }}
     >
-      <div className="container flex flex-wrap px-5 py-24 mx-auto items-center bg-black bg-opacity-50">
+      <div className="container flex flex-wrap px-5 py-24 mx-auto items-center">
         <div
           data-aos="fade-up"
           data-aos-delay="200"

@@ -3,23 +3,25 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Navbar from './components/navbar/Navbar'
 import Hero from './components/hero/Hero'
+import AboutMe from './components/about-me/aboutme'
 import Skills from './components/skills/Skills'
 import Experience from './components/experience/Experience'
 import Language from './components/language/Language'
+import Projects from './components/projects/Projects'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
-import Projects from './components/projects/Projects'
 
 export default function App() {
   useEffect(() => {
-    // AOS-animationer
+    // Initiera AOS-animationer
     AOS.init({ duration: 1000 })
   }, [])
 
   return (
-    <main className="bg-[#0b0c10]">
+    <main className="bg-primary">
       <Navbar />
       <Hero />
+      <AboutMe />
       <section id="skills">
         <Skills />
       </section>
@@ -29,7 +31,6 @@ export default function App() {
       <section id="language">
         <Language />
       </section>
-      {/* NYTT */}
       <section id="projects">
         <Projects />
       </section>

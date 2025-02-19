@@ -1,6 +1,5 @@
 import React from 'react';
 import githubIcon from '../../assets/github.png';
-import instagramIcon from '../../assets/instagram.png';
 import twitterIcon from '../../assets/x.png';
 
 export default function Footer() {
@@ -14,7 +13,6 @@ export default function Footer() {
 
   const socialLinks = [
     { name: 'GitHub', link: 'https://github.com/zhefano', icon: githubIcon },
-    { name: 'Instagram', link: 'https://instagram.com/noelblom', icon: instagramIcon },
     { name: 'X', link: 'https://x.com/noelblom', icon: twitterIcon },
   ];
 
