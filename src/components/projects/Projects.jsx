@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Projects() {
   const projectList = [
@@ -17,20 +17,20 @@ export default function Projects() {
       description: 'Created with HTML and CSS.',
       link: 'https://projektarbete-bibliotek.vercel.app/',
     },
-  ]
+  ];
 
   return (
     <section
       id="projects"
       data-aos="fade-up"
       data-aos-delay="400"
-      className="bg-[#0b0c10] text-white py-16"
+      className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16"
     >
       <div className="container mx-auto px-5">
-        <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-center text-purple-400">
+        <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-center text-indigo-400">
           Projects
         </h2>
-        <p className="text-center text-xl text-purple-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-center text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
           Below you can see some of the projects I built and hosted on Vercel.
         </p>
 
@@ -38,19 +38,19 @@ export default function Projects() {
           {projectList.map((project, index) => (
             <div
               key={index}
-              className="w-full md:w-3/4 bg-black/70 p-6 rounded shadow-md transition-transform hover:scale-105"
+              className="w-full md:w-3/4 bg-black/70 p-6 rounded-lg shadow-xl transition-transform hover:scale-105"
             >
-              <h3 className="text-2xl font-bold text-purple-400 mb-2">
+              <h3 className="text-2xl font-bold text-indigo-400 mb-2">
                 {project.title}
               </h3>
-              <p className="text-purple-200 mb-4">
+              <p className="text-gray-300 mb-4">
                 {project.description}
               </p>
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 underline hover:text-purple-200"
+                className="text-indigo-400 underline hover:text-indigo-300 transition-colors duration-300"
               >
                 Visit the project here
               </a>
@@ -59,5 +59,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }

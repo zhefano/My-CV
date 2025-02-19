@@ -17,26 +17,25 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-purple-900 via-black to-purple-900 rounded-t-lg shadow-lg">
+    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-t-lg shadow-xl">
       <div className="w-full mx-auto max-w-screen-xl px-6 py-8 grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-        
-        {/* Copyright och logotyp */}
+        {/* Copyright */}
         <div className="text-center md:text-left">
-          <span className="text-sm text-gray-200">
+          <span className="text-sm text-gray-300">
             © {new Date().getFullYear()}{' '}
-            <a href="#home" className="hover:underline">
-              Portfolio
+            <a href="#home" className="text-indigo-400 hover:underline transition-colors duration-300">
+              Copywrigt
             </a>
           </span>
         </div>
 
         {/* Navigationslänkar */}
-        <nav className="flex justify-center md:justify-end space-x-6">
+        <nav className="flex justify-center space-x-6" aria-label="Footer Navigation">
           {listNavbar.map((item, index) => (
             <a
               key={index}
               href={item.link}
-              className="text-gray-300 hover:text-yellow-400 transition duration-300"
+              className="text-gray-300 hover:text-indigo-400 transition duration-300"
             >
               {item.name}
             </a>
