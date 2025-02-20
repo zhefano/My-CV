@@ -4,14 +4,12 @@ import html from '../../assets/html.png';
 import webdesign from '../../assets/web-design.png';
 import react from '../../assets/react.png';
 import spaceBackground from '../../assets/space-background.jpg';
-import angular from '../../assets/angular.png';
 
 const skillsList = [
   { name: 'JavaScript', img: javascript },
   { name: 'HTML', img: html },
   { name: 'Web Design', img: webdesign },
   { name: 'React', img: react },
-  { name: 'Angular', img: angular },
 ];
 
 export default function Skills() {
