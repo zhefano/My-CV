@@ -7,6 +7,7 @@ import Experience from './components/experience/Experience'
 import Projects from './components/projects/Projects'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
+import TimelineExample from './components/timeline/TimelineExample'
 
 function App() {
   console.log('App component rendering')
@@ -25,6 +26,10 @@ function App() {
           </section>
           <section id="projects" className="py-20">
             <Projects />
+          </section>
+          <section id="timeline" className="py-20">
+            <h2 className="text-3xl font-bold tracking-tight mb-8">My Timeline</h2>
+            <TimelineExample />
           </section>
           <section id="contact" className="py-20">
             <Contact />
