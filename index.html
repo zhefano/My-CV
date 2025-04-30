@@ -1,13 +1,26 @@
-<!doctype html>
-<html lang="en" class="dark">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Noel Blom - Frontend Developer Student från Göteborg. Se mitt CV och mina projekt." />
-    <meta name="keywords" content="CV, frontend developer, React, JavaScript, portfolio" />
-    <title>Noels CV</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Noel's Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <script>
+      // Immediately set initial theme to prevent flash
+      (function() {
+        const theme = localStorage.getItem('theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.89/build/spline-viewer.js"></script>
+    <style>
+      spline-viewer {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

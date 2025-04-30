@@ -1,43 +1,39 @@
-import React, { useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import React from 'react'
 import Navbar from './components/navbar/Navbar'
 import Hero from './components/hero/Hero'
 import AboutMe from './components/about-me/aboutme'
 import Skills from './components/skills/Skills'
 import Experience from './components/experience/Experience'
-import Language from './components/language/Language'
 import Projects from './components/projects/Projects'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 
-export default function App() {
-  useEffect(() => {
-    // Initiera AOS-animationer
-    AOS.init({ duration: 1000 })
-  }, [])
-
+function App() {
+  console.log('App component rendering')
   return (
-    <main className="bg-primary">
-      <Navbar />
-      <Hero />
-      <AboutMe />
-      <section id="skills">
-        <Skills />
-      </section>
-      <section id="experience">
-        <Experience />
-      </section>
-      <section id="language">
-        <Language />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
-      <Footer />
-    </main>
+    <div className="min-h-screen bg-background text-foreground antialiased">
+      <main className="relative">
+        <Navbar />
+        <Hero />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <AboutMe />
+          <section id="skills" className="py-20">
+            <Skills />
+          </section>
+          <section id="experience" className="py-20">
+            <Experience />
+          </section>
+          <section id="projects" className="py-20">
+            <Projects />
+          </section>
+          <section id="contact" className="py-20">
+            <Contact />
+          </section>
+        </div>
+        <Footer />
+      </main>
+    </div>
   )
 }
+
+export default App

@@ -1,70 +1,84 @@
-import React from 'react';
-import javascript from '../../assets/javascript.png';
-import html from '../../assets/html.png';
-import webdesign from '../../assets/web-design.png';
-import react from '../../assets/react.png';
-import spaceBackground from '../../assets/space-background.jpg';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FiCode, FiLayout, FiBook } from 'react-icons/fi'
 
-const skillsList = [
-  { name: 'JavaScript', img: javascript },
-  { name: 'HTML', img: html },
-  { name: 'Web Design', img: webdesign },
-  { name: 'React', img: react },
-];
+const Skills = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
 
-export default function Skills() {
+  const skillCategories = [
+    {
+      icon: <FiCode className="w-6 h-6" />,
+      title: 'Technologies',
+      skills: ['HTML', 'CSS', 'JavaScript'],
+    },
+    {
+      icon: <FiLayout className="w-6 h-6" />,
+      title: 'Methods & Design',
+      skills: ['UX/UI design', 'Agile / Scrum'],
+    },
+    {
+      icon: <FiBook className="w-6 h-6" />,
+      title: 'Currently Learning',
+      skills: ['React', 'Angular', 'Basic backend development'],
+    },
+  ]
+
   return (
     <section
+      ref={ref}
+      className="py-20 bg-background"
       id="skills"
-      className="relative overflow-hidden flex flex-col text-white body-font"
-      style={{
-        backgroundImage: `url(${spaceBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
     >
-      <div className="container flex flex-wrap px-5 py-24 mx-auto items-center">
-        <div
-          data-aos="fade-up"
-          data-aos-delay="200"
-          className="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pd-10 border-b border-blue-400"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <h1
-            data-aos="fade-right"
-            data-aos-delay="500"
-            className="sm:text-4xl text-2xl font-medium title-font mb-2 text-blue-300"
-          >
-            Skills
-          </h1>
-          <p
-            data-aos="fade-right"
-            data-aos-delay="500"
-            className="leading-relaxed text-base text-blue-200"
-          >
-            I have experience with various technologies and tools essential for
-            frontend development. On the right, you can see some of the
-            technologies I master.
-          </p>
-        </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Skills & Tech-Stack
+          </h2>
+        </motion.div>
 
-        <div
-          data-aos="fade-left"
-          data-aos-delay="500"
-          className="flex flex-col md:w-1/2 md:pl-12"
-        >
-          <nav className="grid grid-cols-2 gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {skillsList.map((skill, index) => (
-              <li key={index} className="w-full flex justify-center">
-                <img
-                  src={skill.img}
-                  alt={`${skill.name} Icon`}
-                  className="rounded-full w-24 h-24 object-cover border-4 border-blue-300"
-                />
-              </li>
-            ))}
-          </nav>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="bg-card p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center mb-4">
+                <div className="p-2 rounded-full bg-primary/10 text-primary mr-4">
+                  {category.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  {category.title}
+                </h3>
+              </div>
+              <ul className="space-y-2">
+                {category.skills.map((skill, skillIndex) => (
+                  <li
+                    key={skillIndex}
+                    className="text-muted-foreground flex items-center"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-primary mr-2" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
+
+export default Skills

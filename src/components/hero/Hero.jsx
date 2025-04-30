@@ -1,50 +1,227 @@
-import React from 'react';
-import videoBg from '../../assets/video.mp4'; // justera sökvägen efter behov
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import Particles from 'react-tsparticles'
+import { loadSlim } from 'tsparticles-slim'
+import { FiGithub, FiLinkedin } from 'react-icons/fi'
+import ThreeDViewer from '../3d-viewer/3DViewer'
 
-export default function Hero() {
+const Hero = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  const particlesInit = async (engine) => {
+    await loadSlim(engine)
+  }
+
+  const particlesOptions = {
+    particles: {
+      number: {
+        value: 100,
+        density: {
+          enable: true,
+          value_area: 800,
+        },
+      },
+      color: {
+        value: '#ffffff',
+      },
+      shape: {
+        type: 'circle',
+      },
+      opacity: {
+        value: 0.5,
+        random: true,
+        anim: {
+          enable: true,
+          speed: 1,
+          opacity_min: 0.1,
+          sync: false,
+        },
+      },
+      size: {
+        value: 2,
+        random: true,
+        anim: {
+          enable: true,
+          speed: 2,
+          size_min: 0.1,
+          sync: false,
+        },
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: '#ffffff',
+        opacity: 0.2,
+        width: 1,
+      },
+      move: {
+        enable: true,
+        speed: 1,
+        direction: 'none',
+        random: true,
+        straight: false,
+        out_mode: 'out',
+        bounce: false,
+      },
+    },
+    interactivity: {
+      detect_on: 'window',
+      events: {
+        onhover: {
+          enable: true,
+          mode: 'grab',
+        },
+        onclick: {
+          enable: true,
+          mode: 'push',
+        },
+        resize: true,
+      },
+      modes: {
+        grab: {
+          distance: 140,
+          line_linked: {
+            opacity: 0.5,
+          },
+        },
+        push: {
+          particles_nb: 4,
+        },
+      },
+    },
+    retina_detect: true,
+  }
+
   return (
     <section
-      id="home"
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Bakgrundsvideon */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover"
+      <div className="absolute inset-0 z-0">
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={particlesOptions}
+          className="w-full h-full"
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center md:text-left"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4"
+            >
+              Hi, I'm <span className="text-primary">Noel Gill</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl sm:text-2xl text-muted-foreground mb-2"
+            >
+              Frontend Developer Student
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg text-muted-foreground mb-4"
+            >
+              Gothenburg, Sweden
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-lg text-muted-foreground mb-8"
+            >
+              Passionate about building responsive, user-friendly websites
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex justify-center md:justify-start space-x-4"
+            >
+              <motion.a
+                href="https://github.com/zhefano"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-secondary hover:bg-primary text-primary hover:text-primary-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FiGithub className="w-6 h-6" />
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com/in/noel-gill-136763306"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-secondary hover:bg-primary text-primary hover:text-primary-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FiLinkedin className="w-6 h-6" />
+              </motion.a>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="hidden md:block"
+          >
+            <ThreeDViewer />
+          </motion.div>
+        </div>
+      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
-        <source src={videoBg} type="video/mp4" />
-        Din webbläsare stödjer inte video.
-      </video>
-
-      {/* Overlay för bättre kontrast */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
-      {/* Innehåll */}
-      <div className="relative z-10 text-center text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">Hello, I'm Noel Gill</h1>
-        <p className="text-xl md:text-2xl">Frontend Developer Student</p>
-        {/* LinkedIn-knapp */}
-        <a
-          href="https://www.linkedin.com/in/noel-gill-136763306/?originalSubdomain=se" // Ersätt med din LinkedIn-URL
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out"
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: 'reverse',
+          }}
+          className="text-muted-foreground"
         >
           <svg
-            className="w-6 h-6 mr-2"
-            fill="currentColor"
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>LinkedIn</title>
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.037-1.851-3.037-1.851 0-2.134 1.445-2.134 2.939v5.667H9.355V9h3.414v1.561h.049c.476-.9 1.637-1.851 3.369-1.851 3.6 0 4.266 2.371 4.266 5.456v6.286zM5.337 7.433c-1.144 0-2.068-.926-2.068-2.067 0-1.141.924-2.066 2.068-2.066 1.14 0 2.065.925 2.065 2.066 0 1.141-.924 2.067-2.065 2.067zM6.837 20.452H3.837V9h3v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.728v20.543C0 23.225.792 24 1.771 24h20.451C23.207 24 24 23.225 24 22.271V1.728C24 .774 23.207 0 22.225 0z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
           </svg>
-          LinkedIn
-        </a>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
-  );
+  )
 }
+
+export default Hero

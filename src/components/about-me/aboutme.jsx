@@ -1,72 +1,44 @@
-import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import aboutBg from '../../assets/space2.avif'; // Bakgrundsbild
-import myImage from '../../assets/img.png'; // Din personliga bild
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
-export default function AboutMe() {
-  const [showMore, setShowMore] = useState(false);
-  const toggleShowMore = () => setShowMore(!showMore);
+const AboutMe = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
 
   return (
     <section
+      ref={ref}
+      className="py-20 bg-background"
       id="about"
-      className="text-white py-16"
-      style={{
-        backgroundImage: `url(${aboutBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
     >
-      <div className="container mx-auto px-5 flex flex-col md:flex-row items-center p-8 rounded">
-        {/* Vänster kolumn: Text */}
-        <div className="md:w-1/2" data-aos="fade-right" data-aos-delay="200">
-          <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-accent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             About Me
           </h2>
-          <p className="text-xl text-gray-300 max-w-md">
-            I'm Noel Blom, a frontend developer student based in Gothenburg.
-            I am passionate about building responsive, user-friendly websites.
-          </p>
-          <div className="mt-6">
-            <button
-              onClick={toggleShowMore}
-              className="px-4 py-2 bg-accent text-primary rounded-full transition-all duration-300 hover:bg-secondary focus:outline-none"
-            >
-              {showMore ? 'Show Less' : 'Read More'}
-            </button>
-          </div>
-          <CSSTransition
-            in={showMore}
-            timeout={300}
-            classNames="fade"
-            unmountOnExit
-          >
-            <p
-              className="mt-6 text-xl text-gray-300 max-w-md"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              I love working on innovative projects and exploring the latest trends in technology.
-              In my free time, I enjoy learning new programming languages, contributing to open-source projects,
-              and connecting with other developers. I thrive in collaborative environments and am always eager to take on new challenges.
-            </p>
-          </CSSTransition>
-        </div>
+        </motion.div>
 
-        {/* Höger kolumn: Bild på dig */}
-        <div
-          className="md:w-1/2 flex justify-center mt-8 md:mt-0"
-          data-aos="fade-left"
-          data-aos-delay="400"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl mx-auto text-center"
         >
-          <img
-            src={myImage}
-            alt="Noel Blom"
-            className="rounded-full w-64 h-64 object-cover shadow-lg"
-          />
-        </div>
+          <p className="text-lg text-muted-foreground">
+            I am a Gothenburg-based frontend developer student who loves building responsive, user-friendly web experiences. I enjoy tackling innovative projects, exploring the latest tech trends, learning new programming languages and contributing to open-source. Collaboration energises me and I am always ready for fresh challenges.
+          </p>
+        </motion.div>
       </div>
     </section>
-  );
+  )
 }
+
+export default AboutMe

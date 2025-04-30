@@ -1,63 +1,93 @@
-import React from 'react';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
-export default function Projects() {
-  const projectList = [
+const Projects = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  const projects = [
     {
       title: 'Weddit',
-      description: 'Created with React, HTML and CSS.',
+      description: 'Built with React, HTML and CSS. Focus on routing and component design.',
       link: 'https://weddit-rho.vercel.app/',
+      technologies: ['React', 'HTML', 'CSS'],
     },
     {
       title: 'Byt Däck',
-      description: 'Created with JavaScript, HTML and CSS.',
+      description: 'Built with JavaScript, HTML and CSS. Emphasis on form validation and responsive layout.',
       link: 'https://byt-dack.vercel.app/',
+      technologies: ['JavaScript', 'HTML', 'CSS'],
     },
     {
       title: 'Library App',
-      description: 'Created with HTML and CSS.',
+      description: 'Built with HTML and CSS. Utilizes grid layout and local storage for data management.',
       link: 'https://projektarbete-bibliotek.vercel.app/',
+      technologies: ['HTML', 'CSS'],
     },
-  ];
+  ]
 
   return (
     <section
+      ref={ref}
+      className="py-20 bg-background"
       id="projects"
-      data-aos="fade-up"
-      data-aos-delay="400"
-      className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16"
     >
-      <div className="container mx-auto px-5">
-        <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-center text-indigo-400">
-          Projects
-        </h2>
-        <p className="text-center text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          Below you can see some of the projects I built and hosted on Vercel.
-        </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Projects
+          </h2>
+        </motion.div>
 
-        <div className="flex flex-col items-center justify-center gap-8">
-          {projectList.map((project, index) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
               key={index}
-              className="w-full md:w-3/4 bg-black/70 p-6 rounded-lg shadow-xl transition-transform hover:scale-105"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="bg-card p-6 rounded-lg shadow-lg"
             >
-              <h3 className="text-2xl font-bold text-indigo-400 mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 {project.title}
               </h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-muted-foreground mb-4">
                 {project.description}
               </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-400 underline hover:text-indigo-300 transition-colors duration-300"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
               >
-                Visit the project here
+                <FiExternalLink className="w-4 h-4 mr-2" />
+                View Project
               </a>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
+
+export default Projects
