@@ -1,97 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Particles from 'react-tsparticles'
 import { loadSlim } from 'tsparticles-slim'
 import { FiGithub, FiLinkedin } from 'react-icons/fi'
-import ThreeDViewer from '../3d-viewer/3DViewer'
+import { ThreeDViewer } from '../3d-viewer/3DViewer'
 
-const Hero = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+function Hero(): JSX.Element {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [typedText, setTypedText] = useState('')
+  const fullText = "Hi, I'm Noel Gill"
 
-  const particlesInit = async (engine) => {
-    await loadSlim(engine)
-  }
+  React.useEffect(() => {
+    if (!inView) return
+    let i = 0
+    const interval = setInterval(() => {
+      setTypedText(fullText.slice(0, i + 1))
+      i++
+      if (i === fullText.length) clearInterval(interval)
+    }, 60)
+    return () => clearInterval(interval)
+  }, [inView])
+
+  const particlesInit = async (engine: any) => { await loadSlim(engine) }
 
   const particlesOptions = {
     particles: {
-      number: {
-        value: 100,
-        density: {
-          enable: true,
-          value_area: 800,
-        },
-      },
-      color: {
-        value: '#ffffff',
-      },
-      shape: {
-        type: 'circle',
-      },
-      opacity: {
-        value: 0.5,
-        random: true,
-        anim: {
-          enable: true,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false,
-        },
-      },
-      size: {
-        value: 2,
-        random: true,
-        anim: {
-          enable: true,
-          speed: 2,
-          size_min: 0.1,
-          sync: false,
-        },
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: '#ffffff',
-        opacity: 0.2,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 1,
-        direction: 'none',
-        random: true,
-        straight: false,
-        out_mode: 'out',
-        bounce: false,
-      },
+      number: { value: 100, density: { enable: true, value_area: 800 } },
+      color: { value: '#ffffff' },
+      shape: { type: 'circle' },
+      opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+      size: { value: 2, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+      line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.2, width: 1 },
+      move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false },
     },
     interactivity: {
       detect_on: 'window',
-      events: {
-        onhover: {
-          enable: true,
-          mode: 'grab',
-        },
-        onclick: {
-          enable: true,
-          mode: 'push',
-        },
-        resize: true,
-      },
-      modes: {
-        grab: {
-          distance: 140,
-          line_linked: {
-            opacity: 0.5,
-          },
-        },
-        push: {
-          particles_nb: 4,
-        },
-      },
+      events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+      modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } },
     },
     retina_detect: true,
   }
@@ -99,18 +45,13 @@ const Hero = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background to-primary/10 py-16 sm:py-24"
     >
       <div className="absolute inset-0 z-0">
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={particlesOptions}
-          className="w-full h-full"
-        />
+        <Particles id="tsparticles" init={particlesInit} options={particlesOptions} className="w-full h-full" />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -121,9 +62,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-4"
             >
-              Hi, I'm <span className="text-primary">Noel Gill</span>
+              <span className="text-primary">{typedText}</span>
+              <span className="blinking-cursor text-primary">|</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -181,7 +123,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden md:block"
+            className="hidden md:flex items-center justify-center"
           >
             <ThreeDViewer />
           </motion.div>
@@ -194,34 +136,18 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-          className="text-muted-foreground"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
+          <span className="text-white text-2xl">↓</span>
         </motion.div>
       </motion.div>
     </section>
   )
 }
 
-export default Hero
+export { Hero }
+
+// Static content och typer
+// ... 

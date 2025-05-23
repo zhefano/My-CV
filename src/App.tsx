@@ -9,28 +9,25 @@ import { Contact } from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 import TimelineExample from './components/timeline/TimelineExample'
 
-function App() {
-  console.log('App component rendering')
+function App(): JSX.Element {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
-      <main className="relative">
-        <Navbar />
-        <Hero />
-        <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
-          <AboutMe />
-          <Skills />
-          <Experience />
-          <Projects />
-          <section id="timeline" className="py-20">
-            <h2 className="text-3xl font-bold tracking-tight mb-8">My Timeline</h2>
-            <TimelineExample />
-          </section>
-          <Contact />
-        </div>
-        <Footer />
+      <Navbar />
+      <Hero />
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <AboutMe />
+        <Skills />
+        <Experience />
+        <Projects />
+        <section className="py-20">
+          <h2 className="text-3xl font-bold tracking-tight mb-8">My Timeline</h2>
+          <TimelineExample />
+        </section>
+        <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
 
-export default App
+export { App } 
